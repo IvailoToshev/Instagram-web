@@ -15,6 +15,10 @@
         @apply h-20 w-20 rounded-full p-[1.5px] border border-2 mr-10 object-contain cursor-pointer hover:scale-110 transition transform duration-200 ease-out
     }
 
+    .settingsTab {
+        @apply flex items-start text-base py-4 pr-4 pl-[32px] hover:bg-gray-50 hover:border-l-2
+    }
+
     .neg-m-16 {
         margin:-1px
     }

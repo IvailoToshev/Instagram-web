@@ -3,9 +3,21 @@ import Allmessages from '../components/message/Allmessages';
 import Modal from '../components/Modal'
 import { Tab } from '@headlessui/react';
 import { useRouter } from 'next/dist/client/router';
+import { createElement, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { HeartIcon, ChatIcon } from '@heroicons/react/solid'
 
 function messages() {
   const router = useRouter()
+  const { data: session } = useSession();
+  const [input, setInput] = useState([])
+  const [like, setLike] = useState(false)
+
+  // const likeMessage = ({liked, unliked}) => {
+  //   createElement(<div>hearth</div>).push(className('message'))
+  // }
+
+  // console.log(likeMessage)
 
   return (
     <div className='bg-gray-50 h-screen'>
@@ -102,7 +114,7 @@ function messages() {
             {/* 2nd section with message */}
             <div>
               <div className='bg-white border-t-[1px] border-b-[1px] border-r-[1px] w-[40rem] h-[52rem]'>
-                <div className='flex justify-between px-8 py-[9.7px] border-b-[1px]'>
+                <div className='flex justify-between sticky z-50 top-0 px-8 py-[9.7px] border-b-[1px]'>
                   <div className='flex justify-center items-center'>
                     <div>
                       <img className='rounded-full w-7 h-7' src="https://qph.fs.quoracdn.net/main-qimg-f521020f4e9761f812d1dd8e1de32ebb-c" alt="pfp" />
@@ -117,22 +129,59 @@ function messages() {
                   </div>
                 </div>
 
-                <div className='h-[43rem]'>
-                  <h1>This is a chat</h1>
+                {/* Chat messages */}
+                <div className='h-[43rem] overflow-auto px-4'>
+                  <div className='flex justify-center py-3'>
+                    <p className='text-xs text-gray-400'>February 10, 2022 2:13 am</p>
+                  </div>
+
+                  <div className='flex justify-start items-center mb-2'>
+                    <div className='mr-3'>
+                      <img onClick={() => router.push('/profile2')} className='rounded-full cursor-pointer w-6 h-6' src="https://qph.fs.quoracdn.net/main-qimg-f521020f4e9761f812d1dd8e1de32ebb-c" alt="pfp" />
+                    </div>
+
+                    <div className='rounded-2xl border px-3 py-2'>
+                      <h1 className='text-sm'>Hello</h1>
+                    </div>
+                  </div>
+                  
+                  {/* You can onDoubleClikc() to add heart icon */}
+                  <div className='flex justify-end items-center mb-2'>
+                    <div className='max-w-[45%] bg-gray-100 rounded-2xl border px-3 py-2'>
+                      <h1 className='text-sm'>I want to eat pizza I want to eat pizza I want to eat pizza I want to eat pizza I want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizza</h1>
+                    </div>
+                    <div className='ml-3'>
+                      <img onClick={() => router.push('/profile')} className='rounded-full cursor-pointer w-6 h-6' src={session?.user?.image} alt="pfp" />
+                    </div>
+                  </div>
+
+                  <div className='flex justify-start items-center mb-2'>
+                    <div className='mr-3'>
+                      <img onClick={() => router.push('/profile2')} className='rounded-full cursor-pointer w-6 h-6' src="https://qph.fs.quoracdn.net/main-qimg-f521020f4e9761f812d1dd8e1de32ebb-c" alt="pfp" />
+                    </div>
+
+                    <div className='message'>
+                      <div className='rounded-2xl border px-3 py-2'>
+                        <h1 className='text-sm'>Hello</h1>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
                 
+                {/* Text Input */}
                 <div className='flex justify-center items-center'>
                   <div className='w-[94%]'>
-                    <div className='w-full'>
+                    <div className='w-full sticky'>
                         <div className='relative mt-1 p-3 rounded-lg'>
                             <div className='absolute inset-y-0 pl-3 flex items-center cursor-pointer'>
                                 <div className='flex justify-center items-center h-5 w-5'>
                                   <svg aria-label="Emoji" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M15.83 10.997a1.167 1.167 0 101.167 1.167 1.167 1.167 0 00-1.167-1.167zm-6.5 1.167a1.167 1.167 0 10-1.166 1.167 1.167 1.167 0 001.166-1.167zm5.163 3.24a3.406 3.406 0 01-4.982.007 1 1 0 10-1.557 1.256 5.397 5.397 0 008.09 0 1 1 0 00-1.55-1.263zM12 .503a11.5 11.5 0 1011.5 11.5A11.513 11.513 0 0012 .503zm0 21a9.5 9.5 0 119.5-9.5 9.51 9.51 0 01-9.5 9.5z"></path></svg>
                                 </div>
                             </div>
-                            <input className='bg-white block w-full pl-10 py-[10px] overflow-auto sm:text-sm border-gray-300 focus:ring-black focus:border-black rounded-lg' type='text' placeholder='Message...' />
+                            <input value={input} onChange={(e) => setInput(e.target.value)} className='bg-white block w-full pl-10 pr-16 py-[10px] overflow-auto sm:text-sm border-gray-300 focus:ring-black focus:border-black rounded-lg' placeholder='Message...' />
                             <div className='absolute inset-y-0 right-8 pl-3 flex items-center cursor-pointer'>
-                              <button className='font-semibold text-sm text-blue-400'>Send</button>
+                              <button type='submit' className='font-semibold text-sm text-blue-400 hover:text-blue-500 active:text-blue-600'>Send</button>
                             </div>
                         </div>
                     </div>

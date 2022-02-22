@@ -1,6 +1,9 @@
 import { getProviders, signIn as SignIntoProvider } from 'next-auth/react'
+import { useRouter } from 'next/router';
 
 function signIn({ providers }) {
+    const router = useRouter()
+
     return (
         <div className='bg-gray-50 h-screen'>
             <div className='flex flex-col items-center justify-center pt-48 text-center'>
@@ -38,7 +41,7 @@ function signIn({ providers }) {
             </div>
 
             <div className='mt-4 w-96 py-4 px-22 border'>
-                <p>Don't have an accout? <a className='cursor-pointer text-blue-500' src=''>Sign up</a></p>
+                <p>Don't have an accout? <a onClick={() => router.push('/auth/signin')} className='cursor-pointer text-blue-500' src=''>Sign up</a></p>
             </div>
             </div> 
         </div>

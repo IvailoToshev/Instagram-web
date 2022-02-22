@@ -1,7 +1,10 @@
 import { getProviders, signIn as SignIntoProvider } from 'next-auth/react'
 import Header from '../../components/Header';
+import { useRouter } from 'next/router';
 
 function signIn({ providers }) {
+    const router = useRouter()
+
     return (
         <div className='flex flex-col items-center justify-center min-h-screen py-16 px-14 text-center'>
             {/* <Header /> */}
@@ -38,7 +41,7 @@ function signIn({ providers }) {
             </div>
 
             <div className='mt-4 w-96 py-8 px-24 border'>
-                <p>Have an account? <a className='cursor-pointer text-blue-500' src=''>Log in</a></p>
+                <p>Have an account? <a onClick={() => router.push('/auth/login')} className='cursor-pointer text-blue-500' src=''>Log in</a></p>
             </div>
         </div> 
     )
