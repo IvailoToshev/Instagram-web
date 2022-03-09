@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Modal from '../components/Modal'
 import PostModal from '../components/PostModal'
 
+
 export default function Home() {
   return (
     <div className="bg-gray-50 h-full overflox-y-scroll scrollbar-hide">

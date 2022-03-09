@@ -1,9 +1,8 @@
 import Header from '../components/Header';
 import Allmessages from '../components/message/Allmessages';
 import Modal from '../components/Modal'
-import { Tab } from '@headlessui/react';
 import { useRouter } from 'next/dist/client/router';
-import { createElement, useState } from 'react';
+import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { HeartIcon, ChatIcon } from '@heroicons/react/solid'
 
@@ -11,13 +10,11 @@ function messages() {
   const router = useRouter()
   const { data: session } = useSession();
   const [input, setInput] = useState([])
-  const [like, setLike] = useState(false)
+  const [inboxState, setInboxState] = useState(1);
 
-  // const likeMessage = ({liked, unliked}) => {
-  //   createElement(<div>hearth</div>).push(className('message'))
-  // }
-
-  // console.log(likeMessage)
+  const toggleInbox = (index) => {
+    setInboxState(index)
+  }
 
   return (
     <div className='bg-gray-50 h-screen'>
@@ -42,50 +39,32 @@ function messages() {
                   </div>
                 </div>
 
-                <Tab.Group>
-                  <div className='flex flex-row w-full border-b-[1px] bg-white'>
+                {/* Inbox's categories */}
+                <div className='flex flex-row w-full border-b-[1px] bg-white'>
+                  <div className='flex items-stretch justify-items-start'>
                     <div className='flex items-stretch justify-items-start'>
-                      <div className='flex items-stretch justify-items-start'>
-                        <nav className='flex flex-row'>
-                          <Tab.List className='flex flex-row'>
-                            <Tab>
-                              <a href="" className='flex flex-1 justify-center py-3 px-5 font-semibold transition-all duration-[250ms] ease-out border-b-[1px] border-b-black opacity-100 z-[2]'>PRIMARY</a>
-                            </Tab>
-                            <Tab>
-                              <a href="" className='flex flex-1 justify-center py-3 px-5 font-semibold transition-all duration-[250ms] ease-out text-gray-400'>GENERAL</a>
-                            </Tab>
-                          </Tab.List>
-                        </nav>
-                        <div className='flex items-stretch justify-items-start w-5/12'>
-                          <div className='flex justify-center items-center ml-7 pr-4'>
-                            <p className='text-blue-500 text-sm font-semibold'>Requests (2)</p>
-                          </div>
+                      <nav className='flex flex-row'>
+                        <p onClick={() => toggleInbox(1)} className={inboxState === 1 ? 'flex flex-1 cursor-pointer justify-center py-3 px-5 font-semibold text-black transition-all duration-[250ms] ease-out border-b-[1px] border-b-black opacity-100 z-[2]' : 'flex flex-1 cursor-pointer text-gray-400 justify-center py-3 px-5 font-semibold transition-all duration-[250ms] ease-out'}>PRIMARY</p>
+                        <p onClick={() => toggleInbox(2)} className={inboxState === 2 ? 'flex flex-1 cursor-pointer justify-center py-3 px-5 font-semibold transition-all duration-[250ms] ease-out border-b-[1px] border-b-black opacity-100 z-[2]' : 'flex flex-1 cursor-pointer justify-center py-3 px-5 font-semibold transition-all duration-[250ms] ease-out text-gray-400'}>GENERAL</p>
+                      </nav>
+                      <div className='flex items-stretch justify-items-start w-5/12'>
+                        <div className='flex justify-center items-center ml-7 pr-4'>
+                          <p className='text-blue-500 text-sm font-semibold'>Requests (2)</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                  
-                  <Tab.Panels>
-                    <Tab.Panel>
-                      <div className='h-[45rem] w-full'>
-                        <div className='flex space-y-2 h-full overflow-auto pt-1 bg-white'>
-                          <div className='w-full'>
-                            <Allmessages />
-                          </div>
-                        </div>
-                      </div>
-                    </Tab.Panel>
-                    <Tab.Panel onClick={() => router.push('/general')}>
-                      <div className='h-[45rem] w-full'>
-                        <div className='flex space-y-2 h-full overflow-auto pt-1 bg-white'>
-                          <div className='w-full'>
-                            <h1>General</h1>
-                          </div>
-                        </div>
-                      </div>
-                    </Tab.Panel>
-                  </Tab.Panels>
-                </Tab.Group>
+                </div>
+                
+                {/* Primary Chats */}
+                <div className='h-[45rem] w-full'>
+                  <div className='flex space-y-2 h-full overflow-auto pt-1 bg-white'>
+                    <div className={inboxState === 1 ? 'block w-full' : 'hidden'}>
+                      <Allmessages />
+                    </div>
+                  </div>
+                </div>
+                    
             </div>
 
             {/* 2nd section without message */}
@@ -179,7 +158,7 @@ function messages() {
                                   <svg aria-label="Emoji" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M15.83 10.997a1.167 1.167 0 101.167 1.167 1.167 1.167 0 00-1.167-1.167zm-6.5 1.167a1.167 1.167 0 10-1.166 1.167 1.167 1.167 0 001.166-1.167zm5.163 3.24a3.406 3.406 0 01-4.982.007 1 1 0 10-1.557 1.256 5.397 5.397 0 008.09 0 1 1 0 00-1.55-1.263zM12 .503a11.5 11.5 0 1011.5 11.5A11.513 11.513 0 0012 .503zm0 21a9.5 9.5 0 119.5-9.5 9.51 9.51 0 01-9.5 9.5z"></path></svg>
                                 </div>
                             </div>
-                            <input value={input} onChange={(e) => setInput(e.target.value)} className='bg-white block w-full pl-10 pr-16 py-[10px] overflow-auto sm:text-sm border-gray-300 focus:ring-black focus:border-black rounded-lg' placeholder='Message...' />
+                            <textarea rows='1' value={input} onChange={(e) => setInput(e.target.value)} className='bg-white resize-none block w-full pl-10 pr-16 py-[10px] overflow-auto sm:text-sm border-gray-300 focus:ring-black focus:border-black rounded-lg' placeholder='Message...' />
                             <div className='absolute inset-y-0 right-8 pl-3 flex items-center cursor-pointer'>
                               <button type='submit' className='font-semibold text-sm text-blue-400 hover:text-blue-500 active:text-blue-600'>Send</button>
                             </div>
