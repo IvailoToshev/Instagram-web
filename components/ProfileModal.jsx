@@ -2,14 +2,18 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react';
 import { useRecoilState } from "recoil"
 import { profileModalState } from "../atoms/profileModal"
+import { useRouter } from 'next/dist/client/router';
+import { signOut, useSession } from 'next-auth/react'
 
 function ProfileModal() {
     const [open, setOpen] = useRecoilState(profileModalState);
+    const router = useRouter()
+    const { data: session } = useSession();
 
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as='div' className='fixed z-10 inset-0 overflow-y-auto' onClose={setOpen}>
-                <div className='flex items-end justify-center min-h-[800px] sm:min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>
+                <div className='flex items-end justify-center min-h-[800px] sm:min-h-screen px-4 pb-20 text-center sm:block sm:p-0'>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -40,37 +44,37 @@ function ProfileModal() {
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
                         <div className='inline-block align-bottom bg-white rounded-lg px-4 pt-1 pb-1 text-center overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-2'>
-                            <div>
+                            <div onClick={() => router.push('/settings')} className='text-sm cursor-pointer pb-3 pt-2 border-b-[1px]'>
                                 <h1>Change Password</h1>
                             </div>
-                            <div>
+                            <div className='text-sm cursor-pointer py-3 border-b-[1px]'>
                                 <h1>Professional Account</h1>
                             </div>
-                            <div>
+                            <div className='text-sm cursor-pointer py-3 border-b-[1px]'>
                                 <h1>Nametag</h1>
                             </div>
-                            <div>
+                            <div className='text-sm cursor-pointer py-3 border-b-[1px]'>
                                 <h1>Apps and Websites</h1>
                             </div>
-                            <div>
+                            <div className='text-sm cursor-pointer py-3 border-b-[1px]'>
                                 <h1>Notifications</h1>
                             </div>
-                            <div>
+                            <div className='text-sm cursor-pointer py-3 border-b-[1px]'>
                                 <h1>Privacy and Security</h1>
                             </div>
-                            <div>
+                            <div className='text-sm cursor-pointer py-3 border-b-[1px]'>
                                 <h1>Login Activity</h1>
                             </div>
-                            <div>
+                            <div className='text-sm cursor-pointer py-3 border-b-[1px]'>
                                 <h1>Emails from Instagram</h1>
                             </div>
-                            <div>
+                            <div className='text-sm cursor-pointer py-3 border-b-[1px]'>
                                 <h1>Report a Problem</h1>
                             </div>
-                            <div>
+                            <div onClick={signOut} className='text-sm cursor-pointer py-3 border-b-[1px]'>
                                 <h1>Log Out</h1>
                             </div>
-                            <div onClick={setOpen}>
+                            <div onClick={setOpen} className='text-sm cursor-pointer pt-3 pb-2'>
                                 <h1>Cancel</h1>
                             </div>
                         </div>

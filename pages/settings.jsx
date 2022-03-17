@@ -1,5 +1,5 @@
 import Header from "../components/Header"
-import { ReactComponent as MetaLogo } from '../assets/icons/meta.svg';
+// import { ReactComponent as MetaLogo } from '../assets/icons/meta.svg';
 import { useState } from "react";
 import EditProfile from "../components/settings/EditProfile";
 import ChangePassword from "../components/settings/ChangePassword";

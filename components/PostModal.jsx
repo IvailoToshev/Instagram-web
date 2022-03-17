@@ -1,10 +1,12 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react';
-import { useRecoilState } from "recoil"
-import { postModalState } from "../atoms/postModalAtom"
+import { useRecoilState } from "recoil";
+import { postModalState } from "../atoms/postModalAtom";
+import { useRouter } from 'next/dist/client/router';
 
 function PostModal() {
     const [open, setOpen] = useRecoilState(postModalState);
+    const router = useRouter();
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -39,18 +41,15 @@ function PostModal() {
                         leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
-                        <div className='inline-block align-bottom bg-white rounded-lg px-4 pt-1 pb-1 text-center overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6'>
-                            <div>
+                        <div className='inline-block align-bottom bg-white rounded-lg px-4 text-center overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-0'>
+                            <div className='text-sm font-semibold text-red-600 cursor-pointer py-2 border-b-[1px]'>
                                 <h1>Unfollow</h1>
                             </div>
-                            <div>
+                            <div onClick={() => router.push('/postPage')} className='text-sm cursor-pointer py-2 border-b-[1px]'>
                                 <h1>Go to post</h1>
                             </div>
-                            <div onClick={setOpen}>
+                            <div onClick={setOpen} className='text-sm cursor-pointer py-2 border-b-[1px]'>
                                 <h1>Cancel</h1>
-                            </div>
-                            <div>
-                                <h1>Unfollow</h1>
                             </div>
                         </div>
                     </Transition.Child>
