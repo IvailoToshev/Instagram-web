@@ -25,7 +25,7 @@ function profile() {
                 <div className='flex w-auto lg:w-3/6'>
                     <div className='m-6 pr-2 lg:m-16 lg:pr-8'>
                         {/* {session ? ( */}
-                        <img alt='profile picture' src="https://scontent-sof1-2.xx.fbcdn.net/v/t1.18169-9/26992357_1743080209077496_7661103156531689506_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=vKjfslBOZiQAX8HyFVp&_nc_ht=scontent-sof1-2.xx&oh=00_AT9Nx6QkJKYGcbqGpj6zaJpv_G2Cm29VLPYihY7vGZGWnA&oe=62B47902" className='h-20 w-24 rounded-full cursor-pointer lg:h-20 lg:w-20 xl:h-36 xl:w-36' />
+                        <img alt='profile picture' src="https://scontent-sof1-2.xx.fbcdn.net/v/t1.18169-9/26992357_1743080209077496_7661103156531689506_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=JVNGZkfigtwAX__5Fgw&_nc_ht=scontent-sof1-2.xx&oh=00_AT9sGlBRmwsfgs70VwD2vN4qy8OTW4nuGyNaCgFkbfA3NA&oe=62DFFA82" className='h-20 w-24 rounded-full cursor-pointer lg:h-20 lg:w-20 xl:h-36 xl:w-36' />
                         {/* ) : <img alt='default profile pic' src='https://cdn130.picsart.com/344993131001211.png' className='h-auto w-auto rounded-full cursor-pointer sm:h-36 sm:w-36' />} */}
                     </div>
                     <div>

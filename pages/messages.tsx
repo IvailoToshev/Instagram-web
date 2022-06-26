@@ -130,7 +130,7 @@ const messages = () => {
                       <h1 className='text-sm'>I want to eat pizza I want to eat pizza I want to eat pizza I want to eat pizza I want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizza</h1>
                     </div>
                     <div className='ml-3'>
-                      <img onClick={() => router.push('/profile')} className='rounded-full cursor-pointer w-6 h-6' src='https://scontent-sof1-2.xx.fbcdn.net/v/t1.18169-9/26992357_1743080209077496_7661103156531689506_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=vKjfslBOZiQAX8HyFVp&_nc_ht=scontent-sof1-2.xx&oh=00_AT9Nx6QkJKYGcbqGpj6zaJpv_G2Cm29VLPYihY7vGZGWnA&oe=62B47902' alt="pfp" />
+                      <img onClick={() => router.push('/profile')} className='rounded-full cursor-pointer w-6 h-6' src='https://scontent-sof1-2.xx.fbcdn.net/v/t1.18169-9/26992357_1743080209077496_7661103156531689506_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=JVNGZkfigtwAX__5Fgw&_nc_ht=scontent-sof1-2.xx&oh=00_AT9sGlBRmwsfgs70VwD2vN4qy8OTW4nuGyNaCgFkbfA3NA&oe=62DFFA82' alt="pfp" />
                     </div>
                   </div>
 

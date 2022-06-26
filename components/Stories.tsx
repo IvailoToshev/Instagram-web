@@ -21,7 +21,7 @@ function Stories() {
     return (
         <div className='flex space-x-2 p-6 bg-white mt-8 border-gray-200 border rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-black'>
             {/* className='border-gray-400 lg:hidden md:hidden space-x-4' */}
-            <Story img='https://scontent-sof1-2.xx.fbcdn.net/v/t1.18169-9/26992357_1743080209077496_7661103156531689506_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=vKjfslBOZiQAX8HyFVp&_nc_ht=scontent-sof1-2.xx&oh=00_AT9Nx6QkJKYGcbqGpj6zaJpv_G2Cm29VLPYihY7vGZGWnA&oe=62B47902' username='ivailotoshev' />
+            <Story img='https://scontent-sof1-2.xx.fbcdn.net/v/t1.18169-9/26992357_1743080209077496_7661103156531689506_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=JVNGZkfigtwAX__5Fgw&_nc_ht=scontent-sof1-2.xx&oh=00_AT9sGlBRmwsfgs70VwD2vN4qy8OTW4nuGyNaCgFkbfA3NA&oe=62DFFA82' username='ivailotoshev' />
 
             {suggestions.map(profile => (
                 <Story key={profile.id} img={profile.randomAvatar} username={profile.randomName} />

@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import {
-    SearchIcon,
     PlusCircleIcon,
     UserGroupIcon,
     PaperAirplaneIcon,
@@ -13,6 +12,7 @@ import { HomeIcon } from '@heroicons/react/solid'
 import { useRouter } from 'next/dist/client/router';
 import { Menu, Transition } from '@headlessui/react';
 import { useState } from 'react';
+import SearchMenu from './Header/SearchMenu';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -57,10 +57,7 @@ const Header = () => {
                 {/* Middle - Search input field */}
                 <div className='max-w-xs'>
                     <div className='relative mt-1 p-3 rounded-md'>
-                        <div className='absolute inset-y-0 pl-3 flex items-center pointer-events-none'>
-                            <SearchIcon className='h-5 w-5 text-gray-500' />
-                        </div>
-                        <input className='bg-gray-50 block w-full pl-10 sm:text-sm border-gray-300 focus:ring-black focus:border-black rounded-md' type='text' placeholder='Search' />
+                        <SearchMenu />
                     </div>
                 </div>
 
@@ -83,22 +80,10 @@ const Header = () => {
                         <Notifications />
 
 
-                        {/* <div className='relative inline-block'>
-                            <HeartIcon onClick={openDropdown} className='navBtn' />
-                            <div id='notDropdown' className='hidden absolute bg-white min-w-[160px] shadow z-10'>
-                                <div className="px-4 py-1">
-                                    <p className="text-sm font-medium leading-5 text-gray-900 truncate">
-                                        This Week
-                                    </p>
-                                </div>
-                            </div>
-                        </div> */}
-
-
                         <Menu>
                             <Menu.Button>
                                 <img
-                                    src='https://scontent-sof1-2.xx.fbcdn.net/v/t1.18169-9/26992357_1743080209077496_7661103156531689506_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=vKjfslBOZiQAX8HyFVp&_nc_ht=scontent-sof1-2.xx&oh=00_AT9Nx6QkJKYGcbqGpj6zaJpv_G2Cm29VLPYihY7vGZGWnA&oe=62B47902'
+                                    src='https://scontent-sof1-2.xx.fbcdn.net/v/t1.18169-9/26992357_1743080209077496_7661103156531689506_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=JVNGZkfigtwAX__5Fgw&_nc_ht=scontent-sof1-2.xx&oh=00_AT9sGlBRmwsfgs70VwD2vN4qy8OTW4nuGyNaCgFkbfA3NA&oe=62DFFA82'
                                     alt='profile pic' 
                                     className='h-10 w-10 rounded-full cursor-pointer'
                                 />
