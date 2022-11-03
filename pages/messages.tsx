@@ -17,7 +17,7 @@ const messages = () => {
   }
 
   return (
-    <div className='bg-gray-50 h-screen'>
+    <div className='bg-gray-50 h-screen z-0'>
         <Header />
         <div className='flex justify-center items-center mt-5'>
           <div className='flex justify-center items-center max-w-7xl max-h-[90%]'>
@@ -68,7 +68,7 @@ const messages = () => {
             </div>
 
             {/* 2nd section without message */}
-            <div>
+            <div className='z-0'>
               <div className='hidden bg-white border-t-[1px] border-b-[1px] border-r-[1px] w-full px-36 py-10 h-full'>
                 {/* Spacer */}
                 <div className='h-[19.45rem]'></div>
@@ -91,7 +91,7 @@ const messages = () => {
             </div>
 
             {/* 2nd section with message */}
-            <div>
+            <div className='z-0'>
               <div className='bg-white border-t-[1px] border-b-[1px] border-r-[1px] w-[40rem] h-[52rem]'>
                 <div className='flex justify-between sticky z-50 top-0 px-8 py-[9.7px] border-b-[1px]'>
                   <div className='flex justify-center items-center'>
@@ -130,7 +130,7 @@ const messages = () => {
                       <h1 className='text-sm'>I want to eat pizza I want to eat pizza I want to eat pizza I want to eat pizza I want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizzaI want to eat pizza</h1>
                     </div>
                     <div className='ml-3'>
-                      <img onClick={() => router.push('/profile')} className='rounded-full cursor-pointer w-6 h-6' src='https://scontent-sof1-2.xx.fbcdn.net/v/t1.18169-9/26992357_1743080209077496_7661103156531689506_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=JVNGZkfigtwAX__5Fgw&_nc_ht=scontent-sof1-2.xx&oh=00_AT9sGlBRmwsfgs70VwD2vN4qy8OTW4nuGyNaCgFkbfA3NA&oe=62DFFA82' alt="pfp" />
+                      <img onClick={() => router.push('/profile')} className='rounded-full cursor-pointer w-6 h-6' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS5oc9cfL5pAMnxKY3Jv6Td9FEAm4BgxQU2Q&usqp=CAU' alt="pfp" />
                     </div>
                   </div>
 

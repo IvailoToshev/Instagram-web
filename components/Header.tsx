@@ -13,6 +13,7 @@ import { useRouter } from 'next/dist/client/router';
 import { Menu, Transition } from '@headlessui/react';
 import { useState } from 'react';
 import SearchMenu from './Header/SearchMenu';
+import MainDropMenu from './Header/MainDropMenu';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -30,17 +31,6 @@ const Header = () => {
           disabled && 'cursor-not-allowed opacity-50'
         )
     }
-
-    // const openDropdown = ({ actived, disabled }) => {
-    //     return classNames(
-    //         'hidden absolute bg-white min-w-[160px] shadow z-10',
-    //         actived ? 'block' : disabled && 'cursor-not-allowed opacity-50'
-    //     )
-    // }
-
-    // console.log(openDropdown)
-
-    // console.log(session)
 
     return (
         <div className='shadow- border-b bg-white sticky top-0 z-50'>
@@ -78,12 +68,13 @@ const Header = () => {
                         <UserGroupIcon className='navBtn' />
 
                         <Notifications />
-
-
+                        
+                        {/* <MainDropMenu /> */}
+                        
                         <Menu>
                             <Menu.Button>
                                 <img
-                                    src='https://scontent-sof1-2.xx.fbcdn.net/v/t1.18169-9/26992357_1743080209077496_7661103156531689506_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=JVNGZkfigtwAX__5Fgw&_nc_ht=scontent-sof1-2.xx&oh=00_AT9sGlBRmwsfgs70VwD2vN4qy8OTW4nuGyNaCgFkbfA3NA&oe=62DFFA82'
+                                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS5oc9cfL5pAMnxKY3Jv6Td9FEAm4BgxQU2Q&usqp=CAU'
                                     alt='profile pic' 
                                     className='h-10 w-10 rounded-full cursor-pointer'
                                 />
@@ -97,7 +88,7 @@ const Header = () => {
                                 leaveTo="transform scale-95 opacity-0"
                             >
                                 {/* Use right-[23rem] or left-[82rem] to center it */}
-                                <Menu.Items className="absolute w-56 mt-8 bg-white border border-gray-200 divide-gray-100 rounded-md shadow-lg outline-none">
+                                <Menu.Items className="absolute right-1 w-56 mt-8 bg-white border border-gray-200 divide-gray-100 rounded-md shadow-lg outline-none">
                                     <div className="py-1">
                                         <Menu.Item as="a" href="/profile" className={resolveClass}>
                                             <svg aria-label="Profile" className='text-gray-700 font-medium mr-2' role="img" viewBox="0 0 24 24" width="16"><circle cx="12.004" cy="12.004" fill="none" r="10.5" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2"></circle><path d="M18.793 20.014a6.08 6.08 0 00-1.778-2.447 3.991 3.991 0 00-2.386-.791H9.38a3.994 3.994 0 00-2.386.791 6.09 6.09 0 00-1.779 2.447" fill="none" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2"></path><circle cx="12.006" cy="9.718" fill="none" r="4.109" stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2"></circle></svg>
